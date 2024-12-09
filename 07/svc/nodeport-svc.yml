@@ -1,0 +1,14 @@
+---
+kind: Service
+apiVersion: v1
+metadate:
+  name: nodeport-svc
+spec:
+  type: NodePort
+  clusterIP: 10.100.10.10
+  selector:
+    app: webapp
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30000
