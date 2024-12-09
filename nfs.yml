@@ -1,0 +1,18 @@
+kind: Pod
+apiVersion: v1
+metadata:  # Corrected spelling here
+  name: web-nfs
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+    volumeMounts:  # Moved inside the container block
+    - name: html
+      mountPath: /usr/share/nginx/html
+  volumes:
+  - name: html
+    nfs:
+      server: 192.168.10.15
+      path: /nas/k8s
